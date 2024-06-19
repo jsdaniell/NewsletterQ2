@@ -1,7 +1,7 @@
 import postgres from '../config/postgres.js';
 import { Resend } from 'resend';
 
-const RESEND_KEY = "re_3jWVv2TG_2MfB6i7wuSA4XDJCUKyDG2iv"
+const RESEND_KEY = process.env.RESEND_KEY;
 
 const EmailController = {
     getEmails: async (req, res) => {
