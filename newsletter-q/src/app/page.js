@@ -12,6 +12,11 @@ export default function Home() {
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
+    if (email === "" || name === "") {
+      toast.error("Preencha todos os campos!")
+      return
+    }
+
     const raw = JSON.stringify({
       "name": name,
       "email": email
