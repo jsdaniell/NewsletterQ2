@@ -1,15 +1,16 @@
 import express from 'express';
 import emailRoutes from "./routes/emailRoutes.js";
+import corsMiddleware from './middlewares/corsMiddleware.js';
+import logMiddleware from './middlewares/logMiddleware.js';
+import rateLimitMiddleware from './middlewares/rateLimitMiddleware.js';
 
 const app = express();
 
 const PORT = 3001;
 
-app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-});
+app.use(corsMiddleware);
+app.use(logMiddleware)
+app.use(rateLimitMiddleware)
 
 app.use(express.json());
 
