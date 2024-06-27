@@ -1,0 +1,3 @@
+const LATER24HOURS = 24 * 60 * 60 * 1000
+
+export { LATER24HOURS };

@@ -1,22 +1,22 @@
-import postgres from '../config/postgres.js';
 import { Resend } from 'resend';
+import { db } from '../config/firebase.js';
+import EmailRepository from '../repositories/emailRepository.js';
 
 const RESEND_KEY = process.env.RESEND_KEY;
 
 const EmailController = {
     getEmails: async (req, res) => {
-        const result = await postgres.query('SELECT * FROM emails');
+        const result = await EmailRepository.getEmails(db);
 
-        res.json(result.rows);
+        res.json(result);
         return
     },
     registerEmail: async (req, res) => {
         const { email, name } = req.body;
 
-        const result = await postgres.query('INSERT INTO emails (email, name) VALUES ($1, $2) RETURNING *', [email, name]);
+        const result = await EmailRepository.registerEmail(db, email, name);
 
-        res.json(result.rows[0]);
-        return
+        return res.json(result);
     },
     sendEmail: async (req, res) =>  {
         const {email, subject, message} = req.body;

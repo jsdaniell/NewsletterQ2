@@ -4,7 +4,6 @@ import { useState } from "react";
 import toast, { Toaster } from 'react-hot-toast';
 
 export default function Home() {
-
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
 
@@ -44,7 +43,6 @@ export default function Home() {
   }
 
   return (
-
     <main className="flex min-h-screen flex-col items-center justify-center">
         <div className="h-[28rem] p-5 w-2/3 bg-cyan-600 rounded-lg flex">
           <div className="relative flex justify-center items-center bg-indigo-500 flex-[2] min-h-full rounded">
